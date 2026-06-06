@@ -50,6 +50,9 @@ Just add this one `<script>` tag to your HTML. No setup, no install.
 
 ---
 
+## Contributing
+We welcome contributions! Read [CONTRIBUTING.md](./CONTRIBUTING.md) to get started.
+
 ## License
 
 MIT — free to use in any project.
