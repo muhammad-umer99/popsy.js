@@ -1,67 +1,6 @@
 const Popsy = {};
 
-// ── SMOOTH SCROLL ─────────────────────────────────────────
-// Requires Lenis CDN loaded before popsy.js
-// Usage: Popsy.smoothScroll()
-Popsy.smoothScroll = function() {
-  if (typeof Lenis === 'undefined') {
-    console.warn('Popsy: Lenis not loaded! Add Lenis CDN before popsy.js');
-    return;
-  }
-  const lenis = new Lenis();
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
-};
-
-
-// ── CUSTOM CURSOR ─────────────────────────────────────────
-// No dependency needed
-// Usage: Popsy.cursor()
-// Usage: Popsy.cursor({ color: '#ff6b6b', size: 20 })
-Popsy.cursor = function(options = {}) {
-  const color = options.color || '#ff6b6b';
-  const size  = options.size  || 20;
-
-  // hide default cursor
-  document.body.style.cursor = 'none';
-
-  const dot = document.createElement('div');
-  dot.style.cssText = `
-    width: ${size}px;
-    height: ${size}px;
-    background: ${color};
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 99999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease, opacity 0.3s ease;
-  `;
-  document.body.appendChild(dot);
-
-  document.addEventListener('mousemove', (e) => {
-    dot.style.left = e.clientX + 'px';
-    dot.style.top  = e.clientY + 'px';
-  });
-
-  // scale up on hover over buttons/links
-  document.querySelectorAll('a, button').forEach(el => {
-    el.style.cursor = 'none';
-    el.addEventListener('mouseenter', () => {
-      dot.style.transform = 'translate(-50%, -50%) scale(1.8)';
-    });
-    el.addEventListener('mouseleave', () => {
-      dot.style.transform = 'translate(-50%, -50%) scale(1)';
-    });
-  });
-};
-
-
 // ── CONFETTI ──────────────────────────────────────────────
-// No dependency needed
 // Usage: Popsy.confetti()
 // Usage: Popsy.confetti({ count: 120, colors: ['#f00', '#0f0'] })
 Popsy.confetti = function(options = {}) {
@@ -99,7 +38,6 @@ Popsy.confetti = function(options = {}) {
 
 
 // ── TOAST ─────────────────────────────────────────────────
-// No dependency needed
 // Usage: Popsy.toast('Saved!')
 // Usage: Popsy.toast('Error!', { type: 'error' })
 // Usage: Popsy.toast('Info!',  { type: 'info', duration: 5000 })
