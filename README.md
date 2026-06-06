@@ -1,32 +1,69 @@
-# Popsy.js 🎉
-A lightweight, fun JavaScript animation library.
+<div align="center">
 
-## How to use
-Just add this one line to your HTML — no file download needed:
+# 🎉 Popsy.js
 
-```html
-<script src="https://cdn.jsdelivr.net/gh/muhammad-umer99/popsy.js@main/popsy.js"></script>
-```
+### Add Fun to Your Web Experience
 
-## Functions
+Popsy.js is a lightweight JavaScript library that adds delightful animations and UI components to any web project — with just one line of code.
 
-```js
-Popsy.counter('#el', 1000)              // count up animation
-Popsy.fadeIn('#el')                     // fade element in
-Popsy.typewriter('#el', 'Hello!')       // typing effect
-Popsy.shake('#el')                      // shake element
-Popsy.confetti()                        // confetti burst 🎉
-Popsy.toast('Message!')                 // success toast
-Popsy.toast('Oops!', { type: 'error' }) // error toast
-```
+[![Stars](https://img.shields.io/github/stars/popsyjs/popsy.js?style=flat-square)](https://github.com/popsyjs/popsy.js)
+[![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](./licence.md)
+[![CDN](https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat-square)](https://cdn.jsdelivr.net/gh/popsyjs/popsy.js@main/popsy.js)
 
-## Example
+</div>
+
+---
+
+## Installation
+
+Just add this one `<script>` tag to your HTML. No setup, no install.
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/muhammad-umer99/popsy.js@main/popsy.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/popsyjs/popsy.js@main/popsy.js"></script>
+```
+
+---
+
+## Components
+
+| Component | Description | Docs |
+|-----------|-------------|------|
+| 🎉 Confetti | Burst of colorful confetti from screen center | [confetti.js](./components/confetti.js) |
+| 🔔 Toast | Notification popup — success, error, info | [toast.js](./components/toast.js) |
+
+---
+
+## Quick Example
+
+```html
+<script src="https://cdn.jsdelivr.net/gh/popsyjs/popsy.js@main/popsy.js"></script>
 
 <script>
-  Popsy.typewriter('#title', 'Hello World!');
-  Popsy.confetti();
+  Popsy.confetti()
+  Popsy.toast('Welcome! 🎉')
 </script>
 ```
+
+---
+
+## Usage
+
+```js
+// Confetti
+Popsy.confetti()
+Popsy.confetti({ count: 120, colors: ['#f00', '#0f0', '#00f'] })
+
+// Toast
+Popsy.toast('Saved!')
+Popsy.toast('Something went wrong', { type: 'error' })
+Popsy.toast('Did you know?',        { type: 'info' })
+Popsy.toast('Stays longer',         { duration: 6000 })
+```
+
+> 📖 For full options and examples, open the component file — all docs are written inside.
+
+---
+
+## License
+
+MIT — free to use in any project.
