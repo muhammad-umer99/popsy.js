@@ -24,7 +24,6 @@ Thanks for your interest in contributing! Everyone is welcome to add new animati
 ## Rules
 
 - Keep it simple — Popsy.js is beginner friendly
-- No dependencies — every component should work with plain JS only
 - Test your component before submitting
 
 ---
