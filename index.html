@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Popsy.js — Fun Web Animations</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
-      --bg:      #0a0a0a;
+      --bg: #0a0a0a;
       --surface: #111111;
-      --border:  #222222;
-      --accent:  #f7c948;
-      --text:    #f0f0f0;
-      --muted:   #666;
+      --border: #222222;
+      --accent: #f7c948;
+      --text: #f0f0f0;
+      --muted: #666;
     }
 
     body {
@@ -31,19 +39,23 @@
       position: relative;
       overflow: hidden;
     }
+
     .hero::before {
       content: '';
       position: absolute;
-      top: -100px; left: 50%;
+      top: -100px;
+      left: 50%;
       transform: translateX(-50%);
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(247,201,72,0.08) 0%, transparent 70%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(247, 201, 72, 0.08) 0%, transparent 70%);
       pointer-events: none;
     }
+
     .badge {
       display: inline-block;
-      background: rgba(247,201,72,0.1);
-      border: 1px solid rgba(247,201,72,0.3);
+      background: rgba(247, 201, 72, 0.1);
+      border: 1px solid rgba(247, 201, 72, 0.3);
       color: var(--accent);
       font-family: 'DM Mono', monospace;
       font-size: 12px;
@@ -52,6 +64,7 @@
       margin-bottom: 28px;
       letter-spacing: 0.05em;
     }
+
     .hero h1 {
       font-size: clamp(52px, 10vw, 96px);
       font-weight: 800;
@@ -59,7 +72,11 @@
       letter-spacing: -0.03em;
       margin-bottom: 20px;
     }
-    .hero h1 span { color: var(--accent); }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
     .hero p {
       font-size: 18px;
       color: var(--muted);
@@ -68,6 +85,7 @@
       line-height: 1.6;
       font-weight: 400;
     }
+
     .cdn-box {
       display: inline-flex;
       align-items: center;
@@ -82,7 +100,11 @@
       max-width: 100%;
       overflow-x: auto;
     }
-    .cdn-box span { color: var(--accent); }
+
+    .cdn-box span {
+      color: var(--accent);
+    }
+
     .copy-btn {
       background: var(--accent);
       color: #000;
@@ -96,7 +118,10 @@
       white-space: nowrap;
       transition: opacity 0.2s;
     }
-    .copy-btn:hover { opacity: 0.85; }
+
+    .copy-btn:hover {
+      opacity: 0.85;
+    }
 
     /* ── SECTION ── */
     .section {
@@ -104,6 +129,7 @@
       margin: 0 auto;
       padding: 0 24px 100px;
     }
+
     .section-label {
       font-family: 'DM Mono', monospace;
       font-size: 11px;
@@ -115,6 +141,7 @@
       align-items: center;
       gap: 12px;
     }
+
     .section-label::after {
       content: '';
       flex: 1;
@@ -130,8 +157,20 @@
       padding: 36px;
       margin-bottom: 24px;
     }
-    .card-title { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
-    .card-desc  { color: var(--muted); font-size: 14px; font-weight: 400; line-height: 1.5; margin-bottom: 28px; }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .card-desc {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+      margin-bottom: 28px;
+    }
 
     /* ── DEMO BUTTONS ── */
     .demo-area {
@@ -140,6 +179,7 @@
       gap: 10px;
       margin-bottom: 24px;
     }
+
     .btn {
       padding: 10px 22px;
       border-radius: 8px;
@@ -152,13 +192,21 @@
       cursor: pointer;
       transition: all 0.15s;
     }
-    .btn:hover { background: #1a1a1a; border-color: #444; }
+
+    .btn:hover {
+      background: #1a1a1a;
+      border-color: #444;
+    }
+
     .btn.active {
       background: var(--accent);
       color: #000;
       border-color: var(--accent);
     }
-    .btn.active:hover { opacity: 0.88; }
+
+    .btn.active:hover {
+      opacity: 0.88;
+    }
 
     /* ── CODE TABS ── */
     .code-tabs {
@@ -166,12 +214,14 @@
       border-radius: 12px;
       overflow: hidden;
     }
+
     .tab-bar {
       display: flex;
       background: #0d0d0d;
       border-bottom: 1px solid var(--border);
       overflow-x: auto;
     }
+
     .tab {
       padding: 10px 20px;
       font-family: 'DM Mono', monospace;
@@ -186,11 +236,16 @@
       border-left: none;
       border-right: none;
     }
-    .tab:hover { color: var(--text); }
+
+    .tab:hover {
+      color: var(--text);
+    }
+
     .tab.active {
       color: var(--accent);
       border-bottom-color: var(--accent);
     }
+
     .tab-content {
       display: none;
       background: #0d0d0d;
@@ -201,12 +256,31 @@
       color: #bbb;
       overflow-x: auto;
     }
-    .tab-content.active { display: block; }
-    .tab-content .k { color: #c792ea; }
-    .tab-content .f { color: #82aaff; }
-    .tab-content .s { color: #c3e88d; }
-    .tab-content .c { color: #546e7a; font-style: italic; }
-    .tab-content .n { color: var(--accent); }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .tab-content .k {
+      color: #c792ea;
+    }
+
+    .tab-content .f {
+      color: #82aaff;
+    }
+
+    .tab-content .s {
+      color: #c3e88d;
+    }
+
+    .tab-content .c {
+      color: #546e7a;
+      font-style: italic;
+    }
+
+    .tab-content .n {
+      color: var(--accent);
+    }
 
     /* ── CONTRIBUTE ── */
     .contribute-card {
@@ -215,8 +289,18 @@
       padding: 40px;
       text-align: center;
     }
-    .contribute-card h3 { font-size: 20px; margin-bottom: 8px; }
-    .contribute-card p  { color: var(--muted); font-size: 14px; margin-bottom: 24px; font-weight: 400; }
+
+    .contribute-card h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .contribute-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 24px;
+      font-weight: 400;
+    }
 
     /* ── FOOTER ── */
     footer {
@@ -226,14 +310,24 @@
       color: var(--muted);
       font-size: 14px;
     }
-    footer a { color: var(--accent); text-decoration: none; }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
 
     @media (max-width: 600px) {
-      .card { padding: 24px; }
-      .hero { padding: 70px 20px 60px; }
+      .card {
+        padding: 24px;
+      }
+
+      .hero {
+        padding: 70px 20px 60px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- HERO -->
@@ -242,7 +336,8 @@
     <h1>Popsy<span>.</span>js</h1>
     <p>A lightweight JavaScript library for fun web animations. One line, zero setup.</p>
     <div class="cdn-box">
-      <span>&lt;script</span> src=<span>"https://cdn.jsdelivr.net/gh/popsyjs/popsy.js@main/popsy.js"</span><span>&gt;&lt;/script&gt;</span>
+      <span>&lt;script</span>
+      src=<span>"https://cdn.jsdelivr.net/gh/popsyjs/popsy.js@main/popsy.js"</span><span>&gt;&lt;/script&gt;</span>
       <button class="copy-btn" onclick="copyCDN()">Copy</button>
     </div>
   </section>
@@ -253,7 +348,8 @@
     <!-- ── CONFETTI CARD ── -->
     <div class="card">
       <div class="card-title">🎉 Confetti</div>
-      <div class="card-desc">Burst of colorful dots from the center of the screen. Click a button to preview and see its code.</div>
+      <div class="card-desc">Burst of colorful dots from the center of the screen. Click a button to preview and see its
+        code.</div>
 
       <div class="demo-area">
         <button class="btn active" onclick="runConfetti('basic', this)">Basic</button>
@@ -268,13 +364,14 @@
           <button class="tab" onclick="switchTab('confetti', 'colors', this)">Custom colors</button>
         </div>
         <div id="confetti-basic" class="tab-content active">
-<span class="n">Popsy</span>.<span class="f">confetti</span>()
+          <span class="n">Popsy</span>.<span class="f">confetti</span>()
         </div>
         <div id="confetti-more" class="tab-content">
-<span class="n">Popsy</span>.<span class="f">confetti</span>({ count: <span class="s">200</span> })
+          <span class="n">Popsy</span>.<span class="f">confetti</span>({ count: <span class="s">200</span> })
         </div>
         <div id="confetti-colors" class="tab-content">
-<span class="n">Popsy</span>.<span class="f">confetti</span>({ colors: [<span class="s">'#f7c948'</span>, <span class="s">'#ff6b6b'</span>, <span class="s">'#fff'</span>] })
+          <span class="n">Popsy</span>.<span class="f">confetti</span>({ colors: [<span class="s">'#f7c948'</span>,
+          <span class="s">'#ff6b6b'</span>, <span class="s">'#fff'</span>] })
         </div>
       </div>
     </div>
@@ -282,7 +379,8 @@
     <!-- ── TOAST CARD ── -->
     <div class="card">
       <div class="card-title">🔔 Toast</div>
-      <div class="card-desc">Notification popup in the bottom-right corner. Click a button to preview and see its code.</div>
+      <div class="card-desc">Notification popup in the bottom-right corner. Click a button to preview and see its code.
+      </div>
 
       <div class="demo-area">
         <button class="btn active" onclick="runToast('success', this)">Success</button>
@@ -299,16 +397,19 @@
           <button class="tab" onclick="switchTab('toast', 'duration', this)">Long duration</button>
         </div>
         <div id="toast-success" class="tab-content active">
-<span class="n">Popsy</span>.<span class="f">toast</span>(<span class="s">'Saved successfully!'</span>)
+          <span class="n">Popsy</span>.<span class="f">toast</span>(<span class="s">'Saved successfully!'</span>)
         </div>
         <div id="toast-error" class="tab-content">
-<span class="n">Popsy</span>.<span class="f">toast</span>(<span class="s">'Something went wrong'</span>, { type: <span class="s">'error'</span> })
+          <span class="n">Popsy</span>.<span class="f">toast</span>(<span class="s">'Something went wrong'</span>, {
+          type: <span class="s">'error'</span> })
         </div>
         <div id="toast-info" class="tab-content">
-<span class="n">Popsy</span>.<span class="f">toast</span>(<span class="s">'Did you know?'</span>, { type: <span class="s">'info'</span> })
+          <span class="n">Popsy</span>.<span class="f">toast</span>(<span class="s">'Did you know?'</span>, { type:
+          <span class="s">'info'</span> })
         </div>
         <div id="toast-duration" class="tab-content">
-<span class="n">Popsy</span>.<span class="f">toast</span>(<span class="s">'Stays for 6 seconds!'</span>, { duration: <span class="s">6000</span> })
+          <span class="n">Popsy</span>.<span class="f">toast</span>(<span class="s">'Stays for 6 seconds!'</span>, {
+          duration: <span class="s">6000</span> })
         </div>
       </div>
     </div>
@@ -325,7 +426,8 @@
   </div>
 
   <footer>
-    <p>Popsy.js is open source — <a href="https://github.com/popsyjs/popsy.js" target="_blank">github.com/popsyjs/popsy.js</a></p>
+    <p>Popsy.js is open source — <a href="https://github.com/popsyjs/popsy.js"
+        target="_blank">github.com/popsyjs/popsy.js</a></p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/gh/popsyjs/popsy.js@main/popsy.js"></script>
@@ -349,15 +451,15 @@
       // sync tab
       const tabBar = btn.closest('.card').querySelector('.tab-bar');
       tabBar.querySelectorAll('.tab').forEach((t, i) => {
-        const match = t.textContent.trim().toLowerCase().replace(/ /g,'') === btn.textContent.trim().toLowerCase().replace(/ /g,'');
+        const match = t.textContent.trim().toLowerCase().replace(/ /g, '') === btn.textContent.trim().toLowerCase().replace(/ /g, '');
         t.classList.toggle('active', match);
       });
       document.querySelectorAll('[id^="confetti-"]').forEach(el => el.classList.remove('active'));
       document.getElementById('confetti-' + variant).classList.add('active');
 
-      if (variant === 'basic')  Popsy.confetti();
-      if (variant === 'more')   Popsy.confetti({ count: 200 });
-      if (variant === 'colors') Popsy.confetti({ colors: ['#f7c948','#ff6b6b','#fff'] });
+      if (variant === 'basic') Popsy.confetti();
+      if (variant === 'more') Popsy.confetti({ count: 200 });
+      if (variant === 'colors') Popsy.confetti({ colors: ['#f7c948', '#ff6b6b', '#fff'] });
     }
 
     // ── Toast runner — also syncs tabs ──
@@ -367,15 +469,15 @@
       // sync tab
       const tabBar = btn.closest('.card').querySelector('.tab-bar');
       tabBar.querySelectorAll('.tab').forEach(t => {
-        const match = t.textContent.trim().toLowerCase().replace(/ /g,'') === btn.textContent.trim().toLowerCase().replace(/ /g,'');
+        const match = t.textContent.trim().toLowerCase().replace(/ /g, '') === btn.textContent.trim().toLowerCase().replace(/ /g, '');
         t.classList.toggle('active', match);
       });
       document.querySelectorAll('[id^="toast-"]').forEach(el => el.classList.remove('active'));
       document.getElementById('toast-' + variant).classList.add('active');
 
-      if (variant === 'success')  Popsy.toast('Saved successfully!');
-      if (variant === 'error')    Popsy.toast('Something went wrong', { type: 'error' });
-      if (variant === 'info')     Popsy.toast('Did you know?', { type: 'info' });
+      if (variant === 'success') Popsy.toast('Saved successfully!');
+      if (variant === 'error') Popsy.toast('Something went wrong', { type: 'error' });
+      if (variant === 'info') Popsy.toast('Did you know?', { type: 'info' });
       if (variant === 'duration') Popsy.toast('Stays for 6 seconds!', { duration: 6000 });
     }
 
@@ -391,4 +493,5 @@
   </script>
 
 </body>
+
 </html>

@@ -26,10 +26,10 @@ Just add this one `<script>` tag to your HTML. No setup, no install.
 
 ## Components
 
-| Component | Description | Docs |
-|-----------|-------------|------|
+| Component   | Description                                   | Docs                                    |
+| ----------- | --------------------------------------------- | --------------------------------------- |
 | 🎉 Confetti | Burst of colorful confetti from screen center | [confetti.js](./components/confetti.js) |
-| 🔔 Toast | Notification popup — success, error, info | [toast.js](./components/toast.js) |
+| 🔔 Toast    | Notification popup — success, error, info     | [toast.js](./components/toast.js)       |
 
 ---
 
@@ -39,7 +39,6 @@ Just add this one `<script>` tag to your HTML. No setup, no install.
 <script src="https://cdn.jsdelivr.net/gh/popsyjs/popsy.js@main/popsy.js"></script>
 
 <button onclick="Popsy.confetti()">Click me</button>
-
 ```
 
 ---
@@ -49,6 +48,7 @@ Just add this one `<script>` tag to your HTML. No setup, no install.
 ---
 
 ## Contributing
+
 We welcome contributions! Read [CONTRIBUTING.md](./CONTRIBUTING.md) to get started.
 
 ## License

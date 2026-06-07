@@ -43,10 +43,10 @@
  * ─────────────────────────────────────────────
  */
 
-Popsy.toast = function(message, options = {}) {
-  const type     = options.type     || 'success';
+Popsy.toast = function (message, options = {}) {
+  const type = options.type || 'success';
   const duration = options.duration || 3000;
-  const colors   = { success:'#22c55e', error:'#ef4444', info:'#3b82f6' };
+  const colors = { success: '#22c55e', error: '#ef4444', info: '#3b82f6' };
   const toast = document.createElement('div');
   toast.textContent = message;
   toast.style.cssText = `
