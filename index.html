@@ -282,6 +282,41 @@
       color: var(--accent);
     }
 
+    /* ── COPY DEMO AREA ── */
+    .copy-demo-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: #0d0d0d;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+
+    .copy-demo-row code {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: #aaa;
+      letter-spacing: 0.03em;
+    }
+
+    .copy-demo-row .preset-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    #copy-inject-default,
+    #copy-inject-api,
+    #copy-inject-simple,
+    #copy-inject-custom {
+      display: inline-flex;
+    }
+
     /* ── CONTRIBUTE ── */
     .contribute-card {
       border: 1px dashed #333;
@@ -338,7 +373,7 @@
     <div class="cdn-box">
       <span>&lt;script</span>
       src=<span>"https://cdn.jsdelivr.net/gh/popsyjs/popsy.js@main/popsy.js"</span><span>&gt;&lt;/script&gt;</span>
-      <button class="copy-btn" onclick="copyCDN()">Copy</button>
+      <button class="copy-btn" onclick="copyCDN(this)">Copy</button>
     </div>
   </section>
 
@@ -350,13 +385,11 @@
       <div class="card-title">🎉 Confetti</div>
       <div class="card-desc">Burst of colorful dots from the center of the screen. Click a button to preview and see its
         code.</div>
-
       <div class="demo-area">
         <button class="btn active" onclick="runConfetti('basic', this)">Basic</button>
         <button class="btn" onclick="runConfetti('more', this)">More dots</button>
         <button class="btn" onclick="runConfetti('colors', this)">Custom colors</button>
       </div>
-
       <div class="code-tabs">
         <div class="tab-bar">
           <button class="tab active" onclick="switchTab('confetti', 'basic', this)">Basic</button>
@@ -381,14 +414,12 @@
       <div class="card-title">🔔 Toast</div>
       <div class="card-desc">Notification popup in the bottom-right corner. Click a button to preview and see its code.
       </div>
-
       <div class="demo-area">
         <button class="btn active" onclick="runToast('success', this)">Success</button>
         <button class="btn" onclick="runToast('error', this)">Error</button>
         <button class="btn" onclick="runToast('info', this)">Info</button>
         <button class="btn" onclick="runToast('duration', this)">Long duration</button>
       </div>
-
       <div class="code-tabs">
         <div class="tab-bar">
           <button class="tab active" onclick="switchTab('toast', 'success', this)">Success</button>
@@ -414,6 +445,94 @@
       </div>
     </div>
 
+    <!-- ── COPY CARD ── -->
+    <div class="card">
+      <div class="card-title">📋 Copy</div>
+      <div class="card-desc">Creates a styled copy button and injects it anywhere. Three presets: <code
+          style="font-family:'DM Mono',monospace;font-size:12px;color:var(--accent)">default</code>, <code
+          style="font-family:'DM Mono',monospace;font-size:12px;color:var(--accent)">api</code>, <code
+          style="font-family:'DM Mono',monospace;font-size:12px;color:var(--accent)">simple</code> — all fully
+        customizable.</div>
+
+      <!-- Default preset row -->
+      <div class="copy-demo-row">
+        <div>
+          <div class="preset-label" style="margin-bottom:6px;">preset: 'default'</div>
+          <code>npm install popsy.js</code>
+        </div>
+        <div id="copy-inject-default"></div>
+      </div>
+
+      <!-- API preset row -->
+      <div class="copy-demo-row">
+        <div>
+          <div class="preset-label" style="margin-bottom:6px;">preset: 'api'</div>
+          <code>sk-••••••••••••xK9f</code>
+        </div>
+        <div id="copy-inject-api"></div>
+      </div>
+
+      <!-- Simple preset row -->
+      <div class="copy-demo-row">
+        <div>
+          <div class="preset-label" style="margin-bottom:6px;">preset: 'simple'</div>
+          <code>https://mysite.com/ref/abc123</code>
+        </div>
+        <div id="copy-inject-simple"></div>
+      </div>
+
+      <!-- Custom styled row -->
+      <div class="copy-demo-row" style="margin-bottom:24px;">
+        <div>
+          <div class="preset-label" style="margin-bottom:6px;">custom — bg, color, radius</div>
+          <code>Custom styled button</code>
+        </div>
+        <div id="copy-inject-custom"></div>
+      </div>
+
+      <div class="code-tabs">
+        <div class="tab-bar">
+          <button class="tab active" onclick="switchTab('copy', 'default', this)">Default</button>
+          <button class="tab" onclick="switchTab('copy', 'api', this)">API key</button>
+          <button class="tab" onclick="switchTab('copy', 'simple', this)">Simple</button>
+          <button class="tab" onclick="switchTab('copy', 'custom', this)">Custom</button>
+        </div>
+        <div id="copy-default" class="tab-content active">
+          <span class="n">Popsy</span>.<span class="f">copy</span>({
+          value: <span class="s">'npm install popsy.js'</span>,
+          target: <span class="s">'#myBox'</span>
+          })
+        </div>
+        <div id="copy-api" class="tab-content">
+          <span class="n">Popsy</span>.<span class="f">copy</span>({
+          value: <span class="s">'sk-abc123xyz'</span>,
+          target: <span class="s">'#keyBox'</span>,
+          preset: <span class="s">'api'</span>,
+          label: <span class="s">'Copy API key'</span>,
+          copied: <span class="s">'Copied!'</span>
+          })
+        </div>
+        <div id="copy-simple" class="tab-content">
+          <span class="n">Popsy</span>.<span class="f">copy</span>({
+          value: <span class="s">'https://mysite.com/ref/abc123'</span>,
+          target: <span class="s">'#linkBox'</span>,
+          preset: <span class="s">'simple'</span>
+          })
+        </div>
+        <div id="copy-custom" class="tab-content">
+          <span class="n">Popsy</span>.<span class="f">copy</span>({
+          value: <span class="s">'Your custom value'</span>,
+          target: <span class="s">'#customBox'</span>,
+          bg: <span class="s">'#6366f1'</span>,
+          color: <span class="s">'#ffffff'</span>,
+          radius: <span class="s">'20px'</span>,
+          label: <span class="s">'Copy invite link'</span>,
+          copied: <span class="s">'Done!'</span>
+          })
+        </div>
+      </div>
+    </div>
+
     <!-- CONTRIBUTE -->
     <div class="contribute-card">
       <h3>✦ Add a Component</h3>
@@ -430,66 +549,178 @@
         target="_blank">github.com/popsyjs/popsy.js</a></p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/gh/popsyjs/popsy.js@main/popsy.js"></script>
+  <!-- ── Popsy.js inlined ── -->
+  <script>
+    const Popsy = {};
+
+    // ── CONFETTI ──────────────────────────────────────────────
+    Popsy.confetti = function (options = {}) {
+      const count = options.count || 80;
+      const colors = options.colors || ['#f00', '#0f0', '#00f', '#ff0', '#f0f', '#0ff'];
+      for (let i = 0; i < count; i++) {
+        const dot = document.createElement('div');
+        const size = Math.random() * 8 + 5;
+        dot.style.cssText = `
+          position:fixed; top:50%; left:50%;
+          width:${size}px; height:${size}px;
+          background:${colors[Math.floor(Math.random() * colors.length)]};
+          border-radius:50%; pointer-events:none; z-index:9999;
+        `;
+        document.body.appendChild(dot);
+        const angle = Math.random() * Math.PI * 2;
+        const dist = Math.random() * 300 + 100;
+        dot.animate([
+          { transform: 'translate(-50%,-50%) scale(1)', opacity: 1 },
+          { transform: `translate(calc(-50% + ${Math.cos(angle) * dist}px), calc(-50% + ${Math.sin(angle) * dist}px)) scale(0)`, opacity: 0 }
+        ], { duration: 1000 + Math.random() * 500, easing: 'ease-out' }).onfinish = () => dot.remove();
+      }
+    };
+
+    // ── TOAST ─────────────────────────────────────────────────
+    Popsy.toast = function (message, options = {}) {
+      const type = options.type || 'success';
+      const duration = options.duration || 3000;
+      const colors = { success: '#22c55e', error: '#ef4444', info: '#3b82f6' };
+      const toast = document.createElement('div');
+      toast.textContent = message;
+      toast.style.cssText = `
+        position:fixed; bottom:30px; right:30px;
+        background:${colors[type] || colors.success};
+        color:#fff; padding:12px 22px; border-radius:8px;
+        font-size:15px; font-family:sans-serif;
+        box-shadow:0 4px 15px rgba(0,0,0,0.2);
+        opacity:0; transition:opacity 0.3s ease; z-index:9999;
+      `;
+      document.body.appendChild(toast);
+      setTimeout(() => { toast.style.opacity = 1; }, 20);
+      setTimeout(() => {
+        toast.style.opacity = 0;
+        setTimeout(() => toast.remove(), 300);
+      }, duration);
+    };
+
+    // ── COPY ──────────────────────────────────────────────────
+    Popsy.copy = function (options = {}) {
+      const presets = {
+        default: { bg: '#18181b', color: '#ffffff', radius: '6px', fontSize: '13px', fontFamily: 'sans-serif', padding: '6px 14px', icon: true },
+        api: { bg: '#0f172a', color: '#94a3b8', radius: '6px', fontSize: '13px', fontFamily: 'monospace', padding: '6px 14px', icon: true },
+        simple: { bg: 'transparent', color: '#6366f1', radius: '4px', fontSize: '13px', fontFamily: 'sans-serif', padding: '4px 6px', icon: false },
+      };
+
+      const preset = presets[options.preset] || presets.default;
+      const value = options.value || '';
+      const label = options.label || 'Copy';
+      const copied = options.copied || 'Copied!';
+      const duration = options.duration || 2000;
+
+      const bg = options.bg || preset.bg;
+      const color = options.color || preset.color;
+      const radius = options.radius || preset.radius;
+      const fontSize = options.fontSize || preset.fontSize;
+
+      const iconSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+      const checkSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+
+      const btn = document.createElement('button');
+      btn.style.cssText = `
+        display:inline-flex; align-items:center; gap:6px;
+        padding:${preset.padding};
+        background:${bg}; color:${color};
+        border:none; border-radius:${radius};
+        font-size:${fontSize}; font-family:${preset.fontFamily}; font-weight:500;
+        cursor:pointer; user-select:none;
+        transition:opacity 0.15s ease, transform 0.15s ease;
+        ${options.preset !== 'simple' ? 'box-shadow:0 1px 4px rgba(0,0,0,0.25);' : ''}
+      `;
+
+      const renderLabel = (icon, text) => {
+        btn.innerHTML = '';
+        if (preset.icon) { const s = document.createElement('span'); s.innerHTML = icon; btn.appendChild(s); }
+        const t = document.createElement('span'); t.textContent = text; btn.appendChild(t);
+      };
+
+      renderLabel(iconSVG, label);
+
+      btn.onmouseenter = () => { btn.style.opacity = '0.82'; };
+      btn.onmouseleave = () => { btn.style.opacity = '1'; };
+      btn.onmousedown = () => { btn.style.transform = 'scale(0.95)'; };
+      btn.onmouseup = () => { btn.style.transform = 'scale(1)'; };
+
+      btn.onclick = () => {
+        if (!value) return;
+        navigator.clipboard.writeText(value).then(() => {
+          renderLabel(checkSVG, copied);
+          btn.style.opacity = '0.7';
+          setTimeout(() => { renderLabel(iconSVG, label); btn.style.opacity = '1'; }, duration);
+        });
+      };
+
+      const target = options.target
+        ? (typeof options.target === 'string' ? document.querySelector(options.target) : options.target)
+        : null;
+
+      if (target) target.appendChild(btn);
+      return btn;
+    };
+  </script>
 
   <script>
     // ── Tab switcher ──
     function switchTab(group, name, clickedTab) {
-      // hide all content panels for this group
       document.querySelectorAll('[id^="' + group + '-"]').forEach(el => el.classList.remove('active'));
-      // deactivate all tabs in same tab-bar
       clickedTab.closest('.tab-bar').querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      // show selected
       document.getElementById(group + '-' + name).classList.add('active');
       clickedTab.classList.add('active');
     }
 
-    // ── Confetti runner — also syncs tabs ──
+    // ── Confetti runner ──
     function runConfetti(variant, btn) {
       btn.closest('.demo-area').querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      // sync tab
-      const tabBar = btn.closest('.card').querySelector('.tab-bar');
-      tabBar.querySelectorAll('.tab').forEach((t, i) => {
-        const match = t.textContent.trim().toLowerCase().replace(/ /g, '') === btn.textContent.trim().toLowerCase().replace(/ /g, '');
-        t.classList.toggle('active', match);
-      });
-      document.querySelectorAll('[id^="confetti-"]').forEach(el => el.classList.remove('active'));
-      document.getElementById('confetti-' + variant).classList.add('active');
-
+      syncTab('confetti', btn.textContent.trim());
       if (variant === 'basic') Popsy.confetti();
       if (variant === 'more') Popsy.confetti({ count: 200 });
       if (variant === 'colors') Popsy.confetti({ colors: ['#f7c948', '#ff6b6b', '#fff'] });
     }
 
-    // ── Toast runner — also syncs tabs ──
+    // ── Toast runner ──
     function runToast(variant, btn) {
       btn.closest('.demo-area').querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      // sync tab
-      const tabBar = btn.closest('.card').querySelector('.tab-bar');
-      tabBar.querySelectorAll('.tab').forEach(t => {
-        const match = t.textContent.trim().toLowerCase().replace(/ /g, '') === btn.textContent.trim().toLowerCase().replace(/ /g, '');
-        t.classList.toggle('active', match);
-      });
-      document.querySelectorAll('[id^="toast-"]').forEach(el => el.classList.remove('active'));
-      document.getElementById('toast-' + variant).classList.add('active');
-
+      syncTab('toast', btn.textContent.trim());
       if (variant === 'success') Popsy.toast('Saved successfully!');
       if (variant === 'error') Popsy.toast('Something went wrong', { type: 'error' });
       if (variant === 'info') Popsy.toast('Did you know?', { type: 'info' });
       if (variant === 'duration') Popsy.toast('Stays for 6 seconds!', { duration: 6000 });
     }
 
+    function syncTab(group, label) {
+      const norm = s => s.toLowerCase().replace(/\s+/g, '');
+      document.querySelectorAll('[id^="' + group + '-"]').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab').forEach(t => {
+        if (norm(t.textContent) === norm(label)) {
+          t.classList.add('active');
+          document.getElementById(group + '-' + t.dataset.tab || '')?.classList.add('active');
+        } else {
+          t.classList.remove('active');
+        }
+      });
+    }
+
     // ── Copy CDN ──
-    function copyCDN() {
+    function copyCDN(btn) {
       const text = '<script src="https://cdn.jsdelivr.net/gh/popsyjs/popsy.js@main/popsy.js"><\/script>';
       navigator.clipboard.writeText(text).then(() => {
-        const btn = document.querySelector('.copy-btn');
         btn.textContent = 'Copied!';
         setTimeout(() => btn.textContent = 'Copy', 2000);
       });
     }
+
+    // ── Init Copy demos ──
+    Popsy.copy({ value: 'npm install popsy.js', target: '#copy-inject-default' });
+    Popsy.copy({ value: 'sk-abc123xyzxK9f', target: '#copy-inject-api', preset: 'api', label: 'Copy API key' });
+    Popsy.copy({ value: 'https://mysite.com/ref/abc123', target: '#copy-inject-simple', preset: 'simple', label: 'Copy link' });
+    Popsy.copy({ value: 'Your custom value here', target: '#copy-inject-custom', bg: '#6366f1', color: '#fff', radius: '20px', label: 'Copy invite link', copied: 'Done!' });
   </script>
 
 </body>
