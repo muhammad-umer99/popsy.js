@@ -29,6 +29,7 @@ Just add this one `<script>` tag to your HTML. No setup, no install.
 | Component   | Description                                   | Docs                                    |
 | ----------- | --------------------------------------------- | --------------------------------------- |
 | 🎉 Confetti | Burst of colorful confetti from screen center | [confetti.js](./components/confetti.js) |
+| 📋 Copy    | Copy-to-clipboard button                      | [copy-button.js](./components/copy-button.js) |
 | 🔔 Toast    | Notification popup — success, error, info     | [toast.js](./components/toast.js)       |
 
 ---
